@@ -5,6 +5,7 @@
 <h2>Signature</h2>
 
 <canvas id="signature-pad" width="500" height="300" style="border:1px solid #000000;"></canvas>
+<canvas id="myCanvas" width="500" height="300"></canvas>
 <br />
 <button class=" btn btn-warning" id="clear">Clear</button>
 <button class=" btn btn-success" id="save">Save</button>
@@ -15,6 +16,17 @@
     var drawing = false;
     var lastX = 0;
     var lastY = 0;
+
+    // Create a new image object
+    const image = new Image();
+
+    // Set the source of the image
+    image.src = '/pics/2.jpg';
+
+    // Draw the image onto the canvas once it has loaded
+    image.onload = function () {
+        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+    }
 
     function getCoords(e) {
         if (e.touches && e.touches.length === 1) {
